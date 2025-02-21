@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import Button from "../elements/Button";
@@ -7,17 +7,18 @@ import { DarkMode } from "../../context/DarkMode";
 const ContactForm = () => {
   const { isDarkMode } = useContext(DarkMode);
   const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form.current);
+    setIsLoading(true);
 
     emailjs
       .sendForm(
-        import.meta.env.VITE_SERVICE_EMAILJS, 
-        import.meta.env.VITE_TEMPLATE_EMAILJS, 
+        "service_gwukpkl", 
+        "template_mmjf64a", 
         form.current,
-        import.meta.env.VITE_PUBLIC_API_KEY
+        "EPbHJtD59ELYtp3qf"
       )
       .then(() => {
         Swal.fire({
@@ -36,8 +37,12 @@ const ContactForm = () => {
           text: "Failed to send message. Please try again later.",
           confirmButtonText: "OK",
         });
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
+
   return (
     <form className="mt-6 space-y-4" ref={form} onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -49,7 +54,7 @@ const ContactForm = () => {
           autoComplete="off"
           className={`w-full p-3 ${
             isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
-          }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
+          } rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
           required
         />
         <input
@@ -60,7 +65,7 @@ const ContactForm = () => {
           autoComplete="off"
           className={`w-full p-3 ${
             isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
-          }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
+          } rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
           required
         />
       </div>
@@ -72,7 +77,7 @@ const ContactForm = () => {
         autoComplete="off"
         className={`w-full p-3 ${
           isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
-        }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
+        } rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
         required
       />
       <textarea
@@ -82,18 +87,23 @@ const ContactForm = () => {
         autoComplete="off"
         className={`w-full h-32 p-3 ${
           isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
-        }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
+        } rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
         required
       ></textarea>
       <Button
-        type={"submit"}
-        className={`w-full py-3 ${
+        type="submit"
+        className={`w-full py-3 flex items-center justify-center ${
           isDarkMode
-            ? "bg-[#112240] hover:bg-gray-800"
-            : "bg-cyan-700 hover:bg-gray-800"
-        }  text-white font-bold rounded-lg transition`}
+            ? "bg-[#112240] hover:bg-gray-600"
+            : "bg-cyan-700 hover:bg-gray-600"
+        } text-white font-bold rounded-lg transition`}
+        disabled={isLoading}
       >
-        Send Message
+        {isLoading ? (
+          <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          "Send Message"
+        )}
       </Button>
     </form>
   );
