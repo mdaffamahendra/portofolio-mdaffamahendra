@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { DarkMode } from "../../context/DarkMode";
 
-const Rectangle = ({ className, animateName }) => {
+const Rectangle = ({ className, animateName, aos }) => {
   const { isDarkMode } = useContext(DarkMode);
   return (
     <div
       className={`border-4 ${
         isDarkMode ? "border-white" : " border-cyan-700"
-      }  ${className} ${animateName}`}
+      }  ${className} ${animateName}`} data-aos={aos}
     ></div>
   );
 };

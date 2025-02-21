@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { DarkMode } from "../../context/DarkMode";
+
 const NavbarList = ({ isMenuOpen }) => {
+  const { isDarkMode} = useContext(DarkMode);
   return (
     <ul
-      className={`fixed top-0 right-0 w-1/2 px-4 py-14 transition-transform duration-300 ease-in-out transform ${
-        isMenuOpen ? "translate-x-0 bg-white shadow-lg" : "translate-x-full"
+      className={`fixed top-0 right-0 w-1/2 px-4 py-14  transition-transform duration-300 ease-in-out transform ${
+        isMenuOpen ? `translate-x-0 ${isDarkMode ? "bg-[#171d32] text-white" : " bg-white text-cyan-700"} shadow-lg` : `translate-x-full`
       } md:translate-x-0 md:relative md:w-auto md:p-0 md:flex gap-6 text-center font-semibold rounded-lg`}
     >
       <li className="relative">

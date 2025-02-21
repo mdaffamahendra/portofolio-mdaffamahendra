@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { DarkMode } from "../../context/DarkMode";
 
-const AboutContentIcon = () => {
+const AboutContentIcon = ({aos}) => {
   const { isDarkMode} = useContext(DarkMode);
 
   return (
-    <div className="flex space-x-6">
+    <div className="flex space-x-6" data-aos={aos}>
       <a
         href="https://www.linkedin.com/in/muhammad-daffa-mahendra/"
         target="_blank"

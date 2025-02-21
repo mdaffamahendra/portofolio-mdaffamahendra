@@ -8,10 +8,10 @@ import { useContext } from "react";
 import { DarkMode } from "../../context/DarkMode";
 
 
-const ProjectSlider = () => {
+const ProjectSlider = ({aos}) => {
   const { isDarkMode } = useContext(DarkMode);
   return (
-    <div className="max-w-5xl mx-auto p-8">
+    <div className="max-w-5xl mx-auto p-8" data-aos={aos}>
       <Swiper
         effect="coverflow"
         grabCursor={true}
@@ -51,7 +51,7 @@ const ProjectSlider = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                Link Website &#8599;
               </a>
             </div>
           </SwiperSlide>

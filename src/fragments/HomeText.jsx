@@ -1,12 +1,25 @@
-const HomeText = () => {
+import React from "react";
+import { TypeAnimation } from "react-type-animation";
+const HomeText = ({ aos }) => {
   return (
-    <div className="md:w-2/4 md:pt-10 ">
-      <h1 className="text-4xl font-bold">
-        I'm{" "}
+    <div className="md:w-2/4 md:pt-10" data-aos={aos}>
+      <h2 className="text-2xl md:text-4xl font-bold"> I'm </h2>
+      <h1 className="text-2xl md:text-4xl font-bold">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-          Daffa Mahendra
+          <TypeAnimation
+            sequence={[
+              "Daffa Mahendra",
+              1000,
+              "Front-End Developer",
+              1000,
+              "Web Enthusiast",
+              1000,
+            ]}
+            speed={30} // Kecepatan typing (semakin kecil, semakin cepat)
+            repeat={Infinity} // Mengulang animasi secara terus-menerus
+            style={{ display: "inline-block" }} // Gaya tambahan jika diperlukan
+          />
         </span>
-        , Front-End Developer
       </h1>
       <p className="text-sm md:text-2xl tracking-tight mt-2">
         I specialize in building modern and responsive web applications.

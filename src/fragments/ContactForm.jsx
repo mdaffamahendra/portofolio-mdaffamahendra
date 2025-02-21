@@ -44,7 +44,9 @@ const ContactForm = () => {
         <input
           type="text"
           placeholder="Your Name *"
+          id="name"
           name="name"
+          autoComplete="off"
           className={`w-full p-3 ${
             isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
           }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
@@ -55,6 +57,7 @@ const ContactForm = () => {
           placeholder="Your Email *"
           id="email"
           name="email"
+          autoComplete="off"
           className={`w-full p-3 ${
             isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
           }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
@@ -66,6 +69,7 @@ const ContactForm = () => {
         placeholder="Subject *"
         id="subject"
         name="subject"
+        autoComplete="off"
         className={`w-full p-3 ${
           isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
         }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}
@@ -75,6 +79,7 @@ const ContactForm = () => {
         placeholder="Your Message *"
         id="message"
         name="message"
+        autoComplete="off"
         className={`w-full h-32 p-3 ${
           isDarkMode ? "bg-[#112240] text-white" : "bg-white text-cyan-700"
         }  rounded-lg focus:outline-cyan-700 border-1 border-cyan-400`}

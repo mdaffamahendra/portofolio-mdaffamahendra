@@ -1,15 +1,26 @@
-import { useContext } from 'react';
-import Image from '../assets/about-me-image.jpg';
-import certifications from "../data/certifications"
-import { DarkMode } from '../../context/DarkMode';
+import { useContext, useEffect } from "react";
+import Image from "../assets/about-me-image.jpg";
+import certifications from "../data/certifications";
+import { DarkMode } from "../../context/DarkMode";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Certification = () => {
   const { isDarkMode } = useContext(DarkMode);
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      once: false,
+    });
+  }, []);
   return (
-    <div className={`${isDarkMode ? "text-white" : "text-cyan-700"} pb-20 pt-24`} id="certifications">
+    <div
+      className={`${isDarkMode ? "text-white" : "text-cyan-700"} pb-20 pt-24`}
+      id="certifications"
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
-        <h2 className="text-4xl font-bold text-center mb-4">Certifications</h2>
-        <div className="mx-auto shadow-lg rounded-xl p-6 my-4 px-12 flex flex-col items-center space-x-4">
+        <h2 className="text-4xl font-bold text-center mb-4" data-aos="fade-up">Certifications</h2>
+        <div className="mx-auto shadow-lg rounded-xl p-6 my-4 px-12 flex flex-col items-center space-x-4" data-aos="fade-up">
           <img
             src={Image}
             alt="Inspirational"
@@ -17,8 +28,9 @@ const Certification = () => {
           />
           <div>
             <p className="font-semibold text-center">
-              "Don't give up just because it's hard. All great things start with small steps
-              filled with perseverance and passion. Keep moving forward!"
+              "Don't give up just because it's hard. All great things start with
+              small steps filled with perseverance and passion. Keep moving
+              forward!"
             </p>
           </div>
         </div>
@@ -27,11 +39,26 @@ const Certification = () => {
           {certifications.map((data) => (
             <div
               key={data.id}
-              className={`${isDarkMode ? "bg-gray-800" : "bg-cyan-800"}  p-6 rounded-lg hover:shadow-lg 
+              data-aos="flip-left"
+              className={`${
+                isDarkMode ? "bg-gray-800" : "bg-cyan-800"
+              }  p-6 rounded-lg hover:shadow-lg 
                 transform transition-transform duration-300 hover:scale-105`}
             >
-              <h3 className={`${isDarkMode ? "text-cyan-700" : "text-white"}  text-2xl font-bold mb-2`}>{data.name}</h3>
-              <p className={`${isDarkMode ? "text-cyan-700" : "text-white"} mb-2`}>{data.company}</p>
+              <h3
+                className={`${
+                  isDarkMode ? "text-cyan-700" : "text-white"
+                }  text-2xl font-bold mb-2`}
+              >
+                {data.name}
+              </h3>
+              <p
+                className={`${
+                  isDarkMode ? "text-cyan-700" : "text-white"
+                } mb-2`}
+              >
+                {data.company}
+              </p>
               <a
                 href={data.link}
                 className="relative text-gray-400 bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 decoration-1 

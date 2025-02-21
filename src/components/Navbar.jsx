@@ -42,7 +42,7 @@ const Navbar = () => {
 
       {/* Menu Items */}
       <div className="flex items-start gap-6">
-        <NavbarList isMenuOpen={isMenuOpen} />
+        <NavbarList isMenuOpen={isMenuOpen}/>
         <Button onClick={toggleDarkMode} className="mr-12">
           {isDarkMode ?  <RiMoonLine size={24} /> : <RiSunLine size={24} />}
         </Button>
